@@ -5,24 +5,17 @@ import com.aallam.openai.client.OpenAI
 import com.aallam.openai.client.OpenAIConfig
 import kotlin.time.Duration.Companion.seconds
 
-val apiKey = "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"
-
-class ChatLog { //dient zur Aufnahme und Kontextspeicherung des User-Inputs und Bot-Response. Vorraussichtlich wird User "U:" und Bot "B:" sein.
-    var chatLog = """"""
-
-    fun writeToHistory(questionOrAnswer: String, userOrBot: Char) {
-        chatLog += "$userOrBot: $questionOrAnswer"
-    }
-}
 
 class OpenAI {
     val LogOfInstance = ChatLog()
+
+    val apiKey = "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"
 
     val config = OpenAIConfig(
         token = apiKey,
         timeout = Timeout(socket = 60.seconds),
     )
-    val openAI = OpenAI(config)
+    val openAI = OpenAI(config) // OpenAI Objekt erstellen
 
     fun genResponse(question: String) {
         LogOfInstance.writeToHistory(question, 'U')
@@ -30,8 +23,4 @@ class OpenAI {
         LogOfInstance.writeToHistory(responsePlacehoder, 'B')
         return
     }
-}
-
-fun main() {
-    OpenAI()
 }
