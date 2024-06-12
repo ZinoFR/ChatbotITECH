@@ -15,6 +15,7 @@ dependencies {
     implementation ("com.aallam.openai:openai-client-bom:3.7.2")
     implementation ("com.aallam.openai:openai-client")
     runtimeOnly ("io.ktor:ktor-client-okhttp")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
 
 tasks.test {
